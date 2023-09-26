@@ -4,7 +4,7 @@ Course in Undergraduate Research Education in bioinformatics and differential ge
 In this course you will work in small teams to compare gene expression in the whiteline sphinx moth (Hyles lineata)
 
 
-### Pipeline overview
+#### Pipeline overview
 
 1. Run Quality check on reads
 2. Trim adapters 
@@ -14,11 +14,13 @@ In this course you will work in small teams to compare gene expression in the wh
 
 
 
-## 1. Run Quality check on reads using fastqc
+### 1. Run Quality check on reads using fastqc
 
 #### Resources:
 + https://github.com/s-andrews/FastQC
 
+Navigate to the folder where your fastq.gz files are located, then adapt the fastqc.sh script to run quality check on the reads
+you have chosen to use in your analyis
 
 
 
