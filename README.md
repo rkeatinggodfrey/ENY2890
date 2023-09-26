@@ -1,7 +1,7 @@
 # ENY2980
 Course in Undergraduate Research Education in bioinformatics and differential gene expression 😁
 
-In this course you will work in small teams to compare gene expression in the whiteline sphinx moth (Hyles lineata)
+In this course you will work in small teams to compare gene expression in the whiteline sphinx moth (*Hyles lineata*)
 
 
 #### Pipeline overview
