@@ -40,7 +40,8 @@ fastqc Hl22042008-f-P_S10_L001_R1_001.fastq.gz Hl22042008-f-P_S10_L001_R2_001.fa
 
 ```
 
-To submit a slurm script to the scheduler, use sbatch scriptname.sh 
+To submit a slurm script to the scheduler, use 
+```sbatch scriptname.sh```
 + the submission script must start with #!/bin/sh
 + the script filename extension should be .sh
 
