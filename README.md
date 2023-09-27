@@ -6,7 +6,7 @@ Course-based Undergraduate Research Experience in bioinformatics and differentia
 </p>
 
 ## Our Data
-+ You have access to gene expression data from the **mouthparts**, **genetalia**, and **legs** from **males** and **females**
++ You have access to gene expression data from the **mouthparts**, **claspers/ovipositor**, and **legs** from **males** and **females**
 + In your group, you will come up with a hypothesis and a general experimental design using this data
 
 
