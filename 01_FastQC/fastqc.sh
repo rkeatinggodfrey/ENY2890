@@ -11,4 +11,4 @@
 
 
 module load fastqc
-fastqc file.R1.fq file.R2.fq
+fastqc file.R1.fq file.R2.fq    #You can specify as many files to process in a single run as you like. 
