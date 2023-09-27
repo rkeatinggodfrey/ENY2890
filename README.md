@@ -1,5 +1,5 @@
 # ENY2980
-Course-based Undergraduate Research Experience in bioinformatics and differential gene expression #mothsarecool 🌙🦋🧬😁
+Course-based Undergraduate Research Experience in bioinformatics and differential gene expression 🌙🦋🧬😁
 
 
 
