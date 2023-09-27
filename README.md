@@ -21,9 +21,10 @@ In this course you will work in small teams to compare gene expression in the wh
 
 ## Get your files!
 + Once you know what hypothesis you'd like to test, copy the fastq.gz files you need to your data folder (*call it what ya want, it's where you will do your analyes*)
-+ To copy files, navigate to your data folder and use the cp command 
++ Each pair of reads a sample are located in their own folder and can be distinguished by R1 (forward) or R2 (reverse) in their name.
++ To copy the sample folders you need, navigate to your data folder and use the cp command with the recursive flag -r so it copies the contents of the sample folder. 
 ```
-cp /blue/eny2890/share/RNAseq/filenames you need .
+cp -r /blue/eny2890/share/RNAseq/folder_of_reads_you_need .
 ```
 
 
