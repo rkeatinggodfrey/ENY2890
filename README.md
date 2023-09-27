@@ -18,6 +18,15 @@ In this course you will work in small teams to compare gene expression in the wh
 
 
 
+
+## Get your files!
++ Once you know what hypothesis you'd like to test, copy the fastq.gz files you need to your data folder (*call it what ya want, it's where you will do your analyes*)
++ To copy files, navigate to your data folder and use the cp command 
+```cp /blue/eny2890/share/RNAseq/filenames you need .```
+
+
+
+
 ## Pipeline overview
 1. Run Quality check on reads
 2. Trim adapters 
