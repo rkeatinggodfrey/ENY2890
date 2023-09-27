@@ -1,0 +1,11 @@
+PASS	Basic Statistics	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+PASS	Per base sequence quality	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+WARN	Per tile sequence quality	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+PASS	Per sequence quality scores	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+FAIL	Per base sequence content	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+PASS	Per sequence GC content	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+PASS	Per base N content	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+PASS	Sequence Length Distribution	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+FAIL	Sequence Duplication Levels	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+WARN	Overrepresented sequences	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
+PASS	Adapter Content	Hl22042008-f-P_S10_L001_R1_001.fastq.gz
