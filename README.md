@@ -1,11 +1,24 @@
 # ENY2980
 Course in Undergraduate Research Education in bioinformatics and differential gene expression 😁
 
-In this course you will work in small teams to compare gene expression in the whiteline sphinx moth (*Hyles lineata*)
 
 
-#### Pipeline overview
 
+
+## Our Data
++ You have access to gene expression data from the **mouthparts**, **genetalia**, and **legs** from **males** and **females**
++ In your group, you will come up with a hypothesis and a general experimental design using this data
+
+
+
+## Broad Analysis Goals
+In this course you will work in small teams to compare gene expression in the whiteline sphinx moth (*Hyles lineata*). We will focus on two analyses:
++ Differential Gene Expression (DGE) wherein we will count the number of times a gene shows up in each sample and compare across samples using statistics to determine if samples or groups of samples have show greater or fewer transcripts of a gene than others.
++ Presence/absence wherein we will simply look at what genes show up in each sample or group of samples and report the presence or absence of certain genes.
+
+
+
+## Pipeline overview
 1. Run Quality check on reads
 2. Trim adapters 
 3. Index the genome 
