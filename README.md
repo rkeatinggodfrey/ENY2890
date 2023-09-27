@@ -1,7 +1,9 @@
 # ENY2980
 Course-based Undergraduate Research Experience in bioinformatics and differential gene expression 🌙🦋🧬😁
 
+<p alignt="center">
 <img width="400px" src="./Images/Hyles_lineata_on_sheet_220826.png" alt="Hyles lineata Finger Rock 2022" />
+</p>
 
 ## Our Data
 + You have access to gene expression data from the **mouthparts**, **genetalia**, and **legs** from **males** and **females**
