@@ -1,7 +1,7 @@
 # ENY2980
 Course-based Undergraduate Research Experience in bioinformatics and differential gene expression 🌙🦋🧬😁
 
-220826_Hyles_lineata_on_sheet.jpg
+![blacklighting](220826_Hyles_lineata_on_sheet.jpg)
 
 
 
