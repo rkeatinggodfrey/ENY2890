@@ -1,13 +1,13 @@
 # ENY2980
-Course-based Undergraduate Research Experience in bioinformatics and differential gene expression 🌙🦋🧬😁
+Course-based Undergraduate Research Experience in bioinformatics and differential gene expression in sphinx moths (Lepidoptera: Sphingidae)   🌙🦋🧬😁
 
 <p align="center">
 <img width="400px" src="./Images/Hyles_lineata_on_sheet_220826.png">
 </p>
 
 ## Our Data
-+ You have access to gene expression data from the **mouthparts**, **claspers/ovipositor**, and **legs** from **males** and **females**
-+ In your group, you will come up with a hypothesis and a general experimental design using this data
++ You have access to gene expression data from the **mouthparts**, **claspers/ovipositor**, and **legs** from **males** and **females**.
++ In your group, you will come up with a hypothesis and a general experimental design using this data.
 
 
 
@@ -69,6 +69,13 @@ To submit a slurm script to the scheduler, use
 ```sbatch scriptname.sh```
 + the submission script must start with #!/bin/sh
 + the script filename extension should be .sh
+
+
+
+### 2. Trimming
+
+#### Resources
++ https://github.com/timflutre/trimmomatic/tree/master
 
 
 
