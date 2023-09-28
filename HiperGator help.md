@@ -1,5 +1,11 @@
 ## A useful reference for working on HiperGator
 
+### Navigating into your folder no matter where you are
+```cd /blue/eny2890/your.folder.name```
+
+### Listing the contents of a director
+```ls directory name```
+
 ### Checking what jobs you are running
 ```squeue -u your.name```
 
