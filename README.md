@@ -44,11 +44,11 @@ cp -r /blue/eny2890/share/RNAseq/folder_of_reads_you_need .
 #### Resources:
 + https://github.com/s-andrews/FastQC
 
-# (A) Navigate to the folder where your fastq.gz files are located, then adapt the fastqc.sh script to run quality check on the reads you have chosen to use in your analysis
+#### (A) Navigate to the folder where your fastq.gz files are located, then adapt the fastqc.sh script to run quality check on the reads you have chosen to use in your analysis
 
 ```cd /blue/eny2890/your_name/your_data_folder```
 
-# (B) Now, create a submission or bash script (.sh) to submit your fastqc job to the HiPerGator scheduler.
+#### (B) Now, create a submission or bash script (.sh) to submit your fastqc job to the HiPerGator scheduler.
 
 + the submission script must start with #!/bin/sh
 + the script filename extension should be .sh
@@ -74,10 +74,10 @@ fastqc FileName_R1_001.fastq.gz FileName_R2_001.fastq.gz
 
 ```
 
-(C) To submit a slurm script to the scheduler, use the ```sbatch``` command:
+#### (C) To submit a slurm script to the scheduler, use the ```sbatch``` command:
 ```sbatch fastqc.sh```
 
-(D) You can check if your job is running
+#### (D) You can check if your job is running
 ```squeue -u your.name```
 
 
