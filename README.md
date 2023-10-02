@@ -8,7 +8,8 @@ Course-based Undergraduate Research Experience in bioinformatics and differentia
 ## Our Data
 + You have access to gene expression data from the **mouthparts**, **claspers/ovipositor**, and **legs** from **males** and **females**.
 + In your group, you will come up with a hypothesis and a general experimental design using this data.
-
++ Data for this project is in ```/blue/eny2890/share/RNASeq/```
++ There are subfolders that contain the data for each sex x body part combination.
 
 
 ## Broad Analysis Goals
@@ -20,6 +21,7 @@ In this course you will work in small teams to compare gene expression in the wh
 
 
 ## Get your files!
+
 + Once you know what hypothesis you'd like to test, copy the fastq.gz files you need to your data folder (*call it what ya want, it's where you will do your analyes*)
 + Each pair of reads a sample are located in their own folder and can be distinguished by R1 (forward) or R2 (reverse) in their name.
 + To copy the sample folders you need, navigate to your data folder and use the cp command with the recursive flag -r so it copies the contents of the sample folder. 
