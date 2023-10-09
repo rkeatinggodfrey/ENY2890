@@ -94,10 +94,14 @@ fastqc FileName_R1_001.fastq.gz FileName_R2_001.fastq.gz
 
 If there were adapters in your reads, you should run a trimming step to remove them, then re-run fastqc to make sure the adapters were removed properly. 
 
+To do this you will use a program called [**Trimmomatic**](http://www.usadellab.org/cms/index.php?page=trimmomatic).
+
+In the 02_Trim folder at the top of this page, you will find an example submission script and the adapter sequence file you need
+
 #### Resources
 + https://github.com/timflutre/trimmomatic/tree/master
 + Trimming and filtering lesson on carpentries lab github: https://carpentries-lab.github.io/metagenomics-analysis/03-trimming-filtering/index.html
- 
+
 
 
 
