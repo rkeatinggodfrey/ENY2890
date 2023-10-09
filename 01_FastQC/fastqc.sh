@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1		# Run a single task
 #SBATCH --cpus-per-task=4	# number of cpus
 #SBATCH --mem=4gb		# memory
-#SBTACH -t 10:00:00 		# time limit in d-hh:mm:ss
+#SBATCH -t 10:00:00 		# time limit in d-hh:mm:ss
 
 
 module load fastqc
