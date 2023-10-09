@@ -92,8 +92,12 @@ fastqc FileName_R1_001.fastq.gz FileName_R2_001.fastq.gz
 
 ### 2. Trimming
 
+If there were adapters in your reads, you should run a trimming step to remove them, then re-run fastqc to make sure the adapters were removed properly. 
+
 #### Resources
 + https://github.com/timflutre/trimmomatic/tree/master
++ Trimming and filtering lesson on carpentries lab github: https://carpentries-lab.github.io/metagenomics-analysis/03-trimming-filtering/index.html
+ 
 
 
 
