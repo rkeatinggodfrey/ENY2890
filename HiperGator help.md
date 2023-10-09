@@ -13,6 +13,10 @@
 To cancel a job, run the squeue command and look copy-paste the JOBID
 ```scancel JOBID```
 
+### Moving a file 
+To move a file from one directory to another use
+``` mv where/the/file/is/filename.ext where/it/should/be/moved/```
+
 
 
 ### Starting a development node for running a small job or testing a sample analysis

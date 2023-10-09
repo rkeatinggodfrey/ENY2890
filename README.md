@@ -2,7 +2,7 @@
 Course-based Undergraduate Research Experience in bioinformatics and differential gene expression in sphinx moths (Lepidoptera: Sphingidae)   🌙🦋🧬😁
 
 <p align="center">
-<img width="400px" src="./Images/Hyles_lineata_on_sheet_220826.png">
+<img width="350px" src="./Images/Hyles_lineata_on_sheet_220826.png">
 </p>
 
 ## Our Data
@@ -38,6 +38,12 @@ cp -r /blue/eny2890/share/RNAseq/folder_of_reads_you_need .
 3. Index the genome 
 4. Map reads to indexed genome
 5. Count reads mapped to genome
+
+
+
+<p align="center">
+<img width="300px" src="./Images/DGE_Pipeline.png">
+</p>
 
 
 
