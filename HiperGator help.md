@@ -2,7 +2,7 @@
 
 ### A silly set of gifs to help you remember
 
-[Linux commands](https://docs.google.com/presentation/d/1rGAfFQNdW3bNnVxPWDT8Dgj-MlUr970G-IZ-5kykWHU/edit#slide=id.p]
+[Linux commands](https://docs.google.com/presentation/d/1rGAfFQNdW3bNnVxPWDT8Dgj-MlUr970G-IZ-5kykWHU/edit#slide=id.p)
 
 
 ### Navigating into your folder no matter where you are
