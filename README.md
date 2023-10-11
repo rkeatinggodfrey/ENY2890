@@ -36,8 +36,8 @@ cp -r /blue/eny2890/share/RNAseq/folder_of_reads_you_need .
 1. Run Quality check on reads
 2. Trim adapters 
 3. Index the genome 
-4. Map reads to indexed genome
-5. Count reads mapped to genome
+4. Map reads to indexed genome & count
+5. Run differential gene expression analysis
 
 
 
