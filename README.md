@@ -2,7 +2,7 @@
 Course-based Undergraduate Research Experience in bioinformatics and differential gene expression in sphinx moths (Lepidoptera: Sphingidae)   🌙🦋🧬😁
 
 <p align="center">
-<img width="350px" src="./Images/Hyles_lineata_on_sheet_220826.png">
+<img width="450px" src="./Images/Hyles_lineata_on_sheet_220826.png">
 </p>
 
 ## Our Data
