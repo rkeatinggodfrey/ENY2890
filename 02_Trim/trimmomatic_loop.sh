@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=trimm
+#SBATCH --job-name=trimmo
 #SBATCH --output=%x_%j.log
 #SBATCH --mail-user={your.name}@ufl.edu
 #SBATCH --mail-type=FAIL,END
