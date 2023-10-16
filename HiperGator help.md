@@ -19,6 +19,12 @@
 To cancel a job, run the squeue command and look copy-paste the JOBID  
 ```scancel {JOBID}```
 
+### Removing a file
+```rm filename```
+
+### Removing a directory and all of its contents
+```rm -r /directory ```
+
 ### Moving a file 
 To move a file from one directory to another  
 ``` mv {path/where/the/file/is/filename.ext} {path/where/it/should/be/moved/}```
@@ -32,6 +38,14 @@ To move a file from one directory to another
 ### Copying a directory from some other place to your current location
 ```cp -r {path/to/the/directory} .```
 
+### Copying all of the fastq.gz files from a directory to your current location 
+
+```cp -path/to/the/directory/*.fastq.gz .```
+
+### Copying all files with "cleaned" in the name from a directory to your current location 
+
+```cp -path/to/the/directory/*cleaned* .```
+Here the asterisks indicate any file that has cleaned in the name flanked by any other characters
 
 ### Starting a development node for running a small job or testing a sample analysis
 
