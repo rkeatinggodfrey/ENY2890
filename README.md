@@ -105,3 +105,37 @@ In the 02_Trim folder at the top of this page, you will find an example submissi
 
 
 
+### 3. part a: Indexing the genome 
+
+Once you are satisfied with the quality of your reads, whether you trimmed them or not, put all of the fastq.gz files (one read pair with *R1 and *R2 for each sample) into one folder.   
+
+To make sure you have all the read files you need for the differential gene expression anaylsis, you can use the following command to count the number of files in the folder: ```ls -1 | wc -l``` which says "list the files in here one per line and pipe list to a word count of the list, which gives you the total number of files in the folder.  
+
+You can now ```rm``` any untrimmed fastq.gz files you do not need anymore.  
+
+We only need one version of the indexed genome that everyone can call upon in their mapping script. We indexed this in class on 10/11/2023 and the submission script to do this is located in the 03_Index_Genome folder at the top of this page. This script created a folder that contains the full genome in fasta format and a series of .ht2 files with indexing information.  
+
+The file path on HiPerGator is: ```/blue/eny2890/share/03_index_genome/index```
+
+
+
+### 3. part b: Mapping reads 
+
+Now that we have our RNA reads and our indexed genome, we can figure out where in the genome the RNA reads are located. To do this we use a program called [**Hisat2**](https://daehwankimlab.github.io/hisat2/).   
+
+This is actually the same program we used to index the genome, but here we will use a more complicated submission script to get *both sets of reads mapped to the genome at once* and output a single mapped reads file for both of them.   
+
+
+<p align="center">
+<img width="400px" src="./Images/231014_ReadMappingwHisat2_sh01.png">
+</p>  
+
+
+
+
+<p align="center">
+<img width="400px" src="./Images/231014_ReadMappingwHisat2_sh02.png">
+</p>
+
+
+
