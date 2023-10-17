@@ -2,7 +2,7 @@
 #SBATCH --job-name=hisat2
 #SBATCH --output=hisat2_%j.out  # running + error log output
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=<your.email@ufl.edu>
+#SBATCH --mail-user=your.email@ufl.edu
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -40,3 +40,5 @@ samtools index $output_dir/$sample_name.sorted.bam
 
 # Remove the intermediate SAM file
 rm $output_dir/$sample_name.sam
+
+done
