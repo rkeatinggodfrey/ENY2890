@@ -9,7 +9,7 @@ We can use the program [Hisat2](https://daehwankimlab.github.io/hisat2/) to do t
 This is actually the same program we used to index the genome, but here we will use a more complicated submission script to get *both sets of reads mapped to the genome at once* and output a single mapped reads file for both of them.   
 
 You should create the directory where you want the mapped reads deposited. Something like:  
-```mkdir mapped``
+```mkdir mapped```
 
 Let's break down the script so you can modify and use it to run the mapping step:
 
