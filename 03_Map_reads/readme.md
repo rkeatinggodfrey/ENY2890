@@ -54,7 +54,7 @@ This line defines the genome index. It needs to include the prefix of the indexe
 
 ### (3) Defining R1 file names
 
-this line navigates into the reads directory you defined above as "reads_dir"  
+This line navigates into the reads directory you defined above as "reads_dir"  
 ```cd "$reads_dir"```  
 
 This line lists all R1 files in the directory. This depends on the pattern of you file names.  
