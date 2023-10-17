@@ -1,4 +1,4 @@
-#### Step by step trimmomatic loop script instructions 
+### Step by step trimmomatic loop script instructions 
 
 (1) Make a folder for trimming
 
