@@ -14,11 +14,9 @@ module load hisat2
 module load samtools
 
 # Set paths to variables
-genome_index="/blue/eny2890/share/03_index_genome/index" #this needs to be the path to the name of indexed files in a folder with the genom
-e fasta
+genome_index="/blue/eny2890/share/03_index_genome/index/Hlineata" #path to the indexed files with the prefix of files (e.g., Hlineata.1.ht2)
 reads_dir="/blue/eny2890/{path_to_your_curated_reads}" #file path to the location where all of your final reads are (trimmed or not)
-output_dir="/blue/eny2890/{path_to_mapped_reads_directy_you_created}" #use the mkdir command to make a directory for the mapped files, .bam
- and .bai, to be deposited in
+output_dir="/blue/eny2890/{path_to_mapped_reads_directy_you_created}" #use the mkdir command to make a directory for the mapped files, .bam and .bai, to be deposited in
 
 # Change to the reads directory
 cd "$reads_dir"
