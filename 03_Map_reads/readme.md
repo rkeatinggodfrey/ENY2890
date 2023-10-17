@@ -45,10 +45,10 @@ Let's look at the script to see what directories we need to define.
 This line defines the genome index. It needs to include the prefix of the indexed file, 'Hlineata'  
 ```genome_index="/blue/eny2890/share/03_index_genome/index/Hlineata" ```  
 
-**CHANGE THIS** to the directory where your reads are located  
+**CHANGE THIS** to the directory where your reads are located. Do not end this line with a "/", just the name of the directory.   
 ```reads_dir="/blue/eny2890/{path_to_your_curated_reads}"```
 
-**CHANGE THIS** is the directory you made for the mapped .bam and .bai files  
+**CHANGE THIS** is the directory you made for the mapped .bam and .bai files. Do not end this line with a "/", just the name of the directory.   
 ```output_dir="/blue/eny2890/{path_to_mapped_reads_directy_you_created}"``` 
 
 
