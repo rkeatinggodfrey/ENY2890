@@ -45,26 +45,21 @@ You should create the directory where you want the mapped reads deposited. Somet
 Let's look at the script to see what directories we need to define.  
 
 This line defines the genome index. It needs to include the prefix of the indexed file, 'Hlineata'  
-
 ```genome_index="/blue/eny2890/share/03_index_genome/index/Hlineata" ```  
 
 **CHANGE THIS** to the directory where your reads are located  
-
 ```reads_dir="/blue/eny2890/{path_to_your_curated_reads}" # file path to the location where all of your final reads are (trimmed or not)```
 
 **CHANGE THIS** is the directory you made for the mapped .bam and .bai files  
-
 ```output_dir="/blue/eny2890/{path_to_mapped_reads_directy_you_created}"``` 
 
 
 ### (3) Defining R1 file names
 
 change into the reads directory you defined above as "reads_dir"  
-
 ```cd "$reads_dir"```  
 
 List all R1 files in the directory. This depends on the pattern of you file names.  
-
 ```read_files_R1=$(ls *R1_clean.fastq.gz)```  
 
 For example, if your file names end with R1_001.fastq.gz, you can change the ```*R1_clean.fastq.gz``` to ```*R1_001.fastq.gz```  
@@ -74,31 +69,24 @@ For example, if your file names end with R1_001.fastq.gz, you can change the ```
 Let's look a what the loop says in plain English.  
 
 For the read files in this folder, do the following  
-
 ```for r1 in $read_files_R1; do`"``  
 
 Extract sample names. Again, **if** your names end with R1_001.fastq.gz, you can **CHANGE** this to "_R1_001.fastq.gz"  
-
 ```sample_name=$(basename "$r1" _R1_clean.fastq.gz)```  
 
 Define R2 based on R1 file name so you do not have to enter it again. **If** your file name ends with _001.fastq.gz **CHANGE** ```_clean``` to ```_001```  
-
 ```r2=$(echo "$r1" | sed 's/_R1_clean/_R2_clean/')```
 
 ### (5) Perform HISAT2 mapping  
 
 FINALLY we run Hisat2! You don't need to change anything here. This calls on the genome index and the r1 and r2 file names we already defined above.  
-
 ```hisat2 -p 8 -x "$genome_index" -1 "$r1" -2 "$r2" | samtools sort -@ 8 -o "$output_dir/$sample_name.sorted.bam"```
 
 We also need an index file for counting genes, so we create that here  
-
 ```samtools index $output_dir/$sample_name.sorted.bam```
 
 Remove any large sam files created in this process  
-
 ```rm $output_dir/$sample_name.sam```
 
 And we are  
-
 ```done```
