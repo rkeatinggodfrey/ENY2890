@@ -4,11 +4,11 @@
 
 ```mkdir trim```
 
-(2) Navigate to the folder where your .fastq.gz RNA read files are stored and move all of the .fastq.gz files to the trim folder t
+(2) Navigate to the folder where your .fastq.gz RNA read files are stored and move all of the .fastq.gz files to the trim folder
 
 ```mv *fastq.gz trim/```
 
-(3) now navigate into that folder to work from there
+(3) Navigate into that folder to work from there
 
 ```cd trim/``` 
 
@@ -19,7 +19,7 @@
 (you can look at it to make sure it matches what is on the git)
 ```cat TruSeq3-PE.fa``` to view file
 
-(5) copy the trimmomatic_loop.sh into your trim folder
+(5) Copy the trimmomatic_loop.sh into your trim folder
 
 ```cp /blue/eny2890/share/02_trimmomatic/trimmomatic_loop.sh .```
 
@@ -34,11 +34,11 @@ As long as the *.fastq.gz file have their original names (e.g., Hl22042008-f-G_S
 ```sbatch trimmomatic.sh```
 
 
-(7) make sure your job is running
+(7) Make sure your job is running
 
 ```-squeue -u {your.name}```
 
-(8) look at the log file to see it running or any errors
+(8) Look at the log file to see it running or any errors
 
 ```cat trimmo_{your_job_number}.log```
 
