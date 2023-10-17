@@ -14,7 +14,7 @@ module load htseq
 
 # Set paths and variables
 input_dir="/blue/eny2890/{path_to_your_reads_folder}" # add your reads file directory
-gtf_file="/blue/eny2890/share/04_counts/augustus.hints.gtf.gff" # you don't have to change this one!
+gtf_file="/blue/eny2890/share/04_counts/augustus.hints.gtf.gff" # this is the annotated genome; you don't have to change this one!
 output_dir="/blue/eny2890/{path_to_your_count_files_folder}" # use the mkdir command to make a folder for counts and list it here
 
 # Create output directory if it doesn't exist
