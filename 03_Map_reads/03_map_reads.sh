@@ -26,7 +26,7 @@ read_files_R1=$(ls *R1_clean.fastq.gz)
 
 # Loop through R1 files and perform HISAT2 mapping
 for r1 in $read_files_R1; do
-    # Extract sample name from R1 filename (assuming the filename format is something like: SampleName_R1_100.fastq.gz)
+    # Extract sample name from R1 filename (assuming the filename format is something like: SampleName_R1_clean.fastq.gz)
     sample_name=$(basename "$r1" _R1_clean.fastq.gz)
     # Define R2 filename based on R1 filename
     r2=$(echo "$r1" | sed 's/_R1_clean/_R2_clean/')
