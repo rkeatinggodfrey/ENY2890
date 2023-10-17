@@ -8,7 +8,8 @@ We can use the program [Hisat2](https://daehwankimlab.github.io/hisat2/) to do t
 
 This is actually the same program we used to index the genome, but here we will use a more complicated submission script to get *both sets of reads mapped to the genome at once* and output a single mapped reads file for both of them.   
 
-
+You should create the directory where you want the mapped reads deposited. Something like:  
+```mkdir mapped``
 
 Let's break down the script so you can modify and use it to run the mapping step:
 
@@ -37,10 +38,7 @@ module load samtools
 
 ### (2) Defining directories  
 
-In order to map to the genome, we need to tell Hisat2 where the indexed genome is located, where our RNA reads are located, and where you want the mapped read files (in .bam and .bai format) to be deposited.  
-
-You should create the directory where you want the mapped reads deposited. Something like:  
-```mkdir mapped```  
+In order to map to the genome, we need to tell Hisat2 where the indexed genome is located, where our RNA reads are located, and where you want the mapped read files (in .bam and .bai format) to be deposited.  `  
 
 Let's look at the script to see what directories we need to define.  
 
