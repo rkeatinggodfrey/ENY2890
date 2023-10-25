@@ -28,5 +28,5 @@ for bam_file in $bam_files; do
     # Extract the sample name from the BAM file name
     sample_name=$(basename $bam_file .bam)
     # Run HTSeq to calculate read counts
-    htseq-count -f bam -s no -i Parent -t exon $bam_file $gtf_file > $output_dir/$sample_name.counts.csv
+    htseq-count -f bam -s no -i Parent -t exon $bam_file $gtf_file > $output_dir/$sample_name.counts.tsv
 done
