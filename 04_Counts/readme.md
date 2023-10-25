@@ -41,4 +41,4 @@ Navigate to the counts folder and take a look at any file using
 You can read definitions for all of these classifications on the [htseq-count page](https://htseq.readthedocs.io/en/release_0.11.1/count.html#0)  
 
 The classifications do not include how many reads actually did map. We can calculate that by adding up the second column of the counts file using this line of code:   
-```awk '{s+=$2}END{print s}' Hl22042001-f-G_S1_L001.sorted.counts.csv```
+```awk '{s+=$2}END{print s}' {filename}.sorted.counts.csv```
