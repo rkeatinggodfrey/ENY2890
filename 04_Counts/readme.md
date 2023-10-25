@@ -28,3 +28,17 @@ In our .sh script, we run htseq-count using the following parameters:
 + This line of code tells htseq-count that we are providing .bam files (```-f bam```). 
 + The ```-t exon``` flag indicates we want to count reads that mapped to exons and not any of the other features in the third column of our .gtf file. 
 + The ```-i Parent``` flag in the code says we want reads that map to features with this same id as the same. In our genome gtf feature file, "Parent" indicates the primary gene ID.
+
+
+### Interpreting your count data  
+
+Once your count files are finished, you can use the ```tail``` command to look at some statistics on how many reads mapped to features ("Parent" gene IDs).  
+
+Navigate to the counts folder and take a look at any file using 
+
+```tail {filename}.sorted.counts.csv```  
+
+You can read definitions for all of these classifications on the [htseq-count page](https://htseq.readthedocs.io/en/release_0.11.1/count.html#0)  
+
+The classifications do not include how many reads actually did map. We can calculate that by adding up the second column of the counts file using this line of code:   
+```awk '{s+=$2}END{print s}' Hl22042001-f-G_S1_L001.sorted.counts.csv```
