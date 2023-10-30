@@ -46,4 +46,5 @@ Put a copy of your metadata file in .csv format in the parent differential gene 
 Resources:  
 + The original paper by [Love, Huber and Anders (2014)](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)  
 + The bioconductor page for [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)  
++ [Authors'  step-by-step tutorial](https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)  
  + [Count normalization](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
