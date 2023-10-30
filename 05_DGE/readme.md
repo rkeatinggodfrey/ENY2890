@@ -1,7 +1,7 @@
 ## Differential Gene Expression (DGE)  
 
 <p align="center">
-<img width="400px" src="./Images/Research_InfoGraphic.jpeg">
+<img width="400px" src="./Images/Research_InfoGraphic.jpg">
 </p> 
 
 Now that we have 
