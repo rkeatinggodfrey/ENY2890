@@ -1,6 +1,20 @@
 ## Differential Gene Expression (DGE)  
 
-Now that we have (1) gene counts for each set of reads for each sample and (2) a metadata file that gives us biological conditions (sex, body part) for each sample, we can use statistical analyses to ask if particular genes were detected more frequently in certain samples or in certain biological conditions. 
+<p align="center">
+<img width="400px" src="./Images/Research_InfoGraphic.jpeg">
+</p> 
+
+Now that we have 
++ (1) gene counts for each set of reads for each sample and 
++ (2) a metadata file that gives us biological conditions (sex, body part) for each sample,  
+
+we can use statistical analyses to ask if particular genes were detected more frequently in certain samples or in certain biological conditions.  
+
+The general structure of this question is:
+
+y ~ sex * body part  
+
+which asks if gene expression (*y*) is determined by (*~*) the interaction of the variables *sex* and *body part*.  
   
 
 ### (1) Download R and R studio to run DESeq2 
@@ -21,4 +35,6 @@ This is a useful guide for working in RStudio
 ### (2) Download counts (.tsv) files from HiPer Gator  
 
 At this point everyone needs a copy of all counts files. Download your counts files and share copies with your group members!
+
+Make sure the counts file names match the names in the "sample" column of your metadata file.
 
