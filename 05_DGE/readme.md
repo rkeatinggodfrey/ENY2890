@@ -34,7 +34,9 @@ This is a useful guide for working in RStudio
 
 ### (2) Download counts (.tsv) files from HiPer Gator  
 
-At this point everyone needs a copy of all counts files. Download your counts files and share copies with your group members!
+At this point everyone needs a copy of all counts files. Download your counts files and share copies with your group members!  
 
-Make sure the counts file names match the names in the "sample" column of your metadata file.
+Make a directory on your computer for differential gene analysis (e.g., "DGE_Analysis"). Make a folder within this directory just for your counts.tsv files (e.g., "counts_files"). Put all of your counts files within this folder. **Do not put anything else in this folder**  
+
+Put a copy of your metadata file in .csv format in the parent differential gene expression directory. **Make sure names in the "sample" column of your metadata match the counts file names in your counts directory**
 
