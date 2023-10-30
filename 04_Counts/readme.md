@@ -41,4 +41,14 @@ Navigate to the counts folder and take a look at any file using
 You can read definitions for all of these classifications on the [htseq-count page](https://htseq.readthedocs.io/en/release_0.11.1/count.html#0)  
 
 The classifications do not include how many reads actually did map. We can calculate that by adding up the second column of the counts file using this line of code:   
-```awk '{s+=$2}END{print s}' {filename}.sorted.counts.csv```
+```awk '{s+=$2}END{print s}' {filename}.sorted.counts.csv```  
+
+Now in your metadata file you can include the following columns to calculate the percentage of assigned reads for each of your samples. The first column is the number from the ```awk``` command above and the others can be view using the ```tail``` command.  
+
++ feature_counts
++ no_feature
++ amiguous
++ too_low_aQual
++ not aligned
++ alignment_not_unique
+
