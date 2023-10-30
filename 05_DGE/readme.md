@@ -40,3 +40,10 @@ Make a directory on your computer for differential gene analysis (e.g., "DGE_Ana
 
 Put a copy of your metadata file in .csv format in the parent differential gene expression directory. **Make sure names in the "sample" column of your metadata match the counts file names in your counts directory**
 
+
+### (3) Performing differential gene expression with DESeq2  
+
+Resources:  
++ The original paper by [Love, Huber and Anders (2014)](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)  
++ The bioconductor page for [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)  
+ + [Count normalization](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
