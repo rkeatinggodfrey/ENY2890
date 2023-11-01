@@ -38,7 +38,11 @@ At this point everyone needs a copy of all counts files. Download your counts fi
 
 Make a directory on your computer for differential gene analysis (e.g., "DGE_Analysis"). Make a folder within this directory just for your counts.tsv files (e.g., "counts_files"). Put all of your counts files within this folder. **Do not put anything else in this folder**  
 
-Put a copy of your metadata file in .csv format in the parent differential gene expression directory. **Make sure names in the "sample" column of your metadata match the counts file names in your counts directory**
+Put a copy of your metadata file in .csv format in the parent differential gene expression directory. **Make sure names in the "sample" column of your metadata match the counts file names in your counts directory**  
+
+in unix you can remove a portion of the filename using the following syntax:  
+```for f in *_L001.sorted.counts.*; do echo mv -i -- "$f" "${f//_L001.sorted.counts./.}"; done```  
+the ```echo``` here will print what it plans to change the file names to. If it is correct, remove the ```echo``` from the line and rerun to actually change the file names. 
 
 
 ### (3) Performing differential gene expression with DESeq2  

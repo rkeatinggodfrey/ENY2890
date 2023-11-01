@@ -54,3 +54,13 @@ To request 4gb of memory and 4 cpus for 1 hour, use
 ```module load ufrc 
 srundev --mem=4gb --ntasks=1 --cpus-per-task=4 --time=01:00:00 
 ```
+
+### Working with FASTA files
+
+To retain the entire header  
+
+```grep ">" {name_of_file}.fasta | sed 's,>,,g' > ors_prot_ms_acc.txt```
+
+To retain only the >IDs  
+
+```grep "^>" {name_of_file}.fasta | cut -d' ' -f1 > test```
