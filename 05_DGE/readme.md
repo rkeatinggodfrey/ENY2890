@@ -65,7 +65,7 @@ Resources:
 
 #### (1) Read in counts files  
 + Option A: read in folder of counts files in .tsv format and combine in R
-+ Option B: combine counts files into single file using Excel or Google Sheets  
++ Option B: combine counts files into single file using Excel or Google Sheets, save as .csv format, then import single file using  ```read.csv``` function
 
 #### (2) Import metadata file into R
 The sample names here need to match the column names in your counts file.  
