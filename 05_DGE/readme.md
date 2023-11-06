@@ -59,6 +59,10 @@ Resources:
 #### Steps in R ###
 </p>
 
+<p align="center">
+<img width="400px" src="../Images/rstudio_anatomy_EmmaR.png">
+</p> 
+
 #### (1) Read in counts files  
 + Option A: read in folder of counts files in .tsv format and combine in R
 + Option B: combine counts files into single file using Excel or Google Sheets  
