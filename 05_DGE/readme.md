@@ -45,10 +45,28 @@ in unix you can remove a portion of the filename using the following syntax:
 the ```echo``` here will print what it plans to change the file names to. If it is correct, remove the ```echo``` from the line and rerun to actually change the file names. 
 
 
-### (3) Performing differential gene expression with DESeq2  
+### (3) Performing differential gene expression with DESeq2 in R 
 
 Resources:  
 + The original paper by [Love, Huber and Anders (2014)](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)  
 + The bioconductor page for [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)  
 + [Authors'  step-by-step tutorial](https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)  
  + [Count normalization](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
+
+
+
+<p align="center">
+#### Steps in R ###
+</p>
+
+#### (1) Read in counts files  
++ Option A: read in folder of counts files in .tsv format and combine in R
++ Option B: combine counts files into single file using Excel or Google Sheets  
+
+#### (2) Import metadata file into R
+The sample names here need to match the column names in your counts file.  
+
+#### (3) Set up DESeq2 model & run statistical analysis  
+
+
+#### (4) Merge results with functional annotation
