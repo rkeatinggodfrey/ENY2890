@@ -62,7 +62,7 @@ Resources:
 </p>
 
 <p align="center">
-<img width="400px" src="../Images/rstudio_anatomy_EmmaR.png">
+<img width="600px" src="../Images/rstudio_anatomy_EmmaR.png">
 </p> 
 
 #### (1) Read in counts files  
