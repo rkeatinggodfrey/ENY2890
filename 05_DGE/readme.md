@@ -28,6 +28,8 @@ If you want to run this analysis locally on your own computer, you will need to 
 
 + [Here are some helpful step-by-step instructions with screenshots from Colorado State University](https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.html) 
 
++ [Here is a software carpentry introduction to RStudio](https://swcarpentry.github.io/r-novice-inflammation/09-supp-intro-rstudio.html)
+
 This is a useful guide for working in RStudio
 + [Hands-On Programming with R github](https://rstudio-education.github.io/hopr/starting.html)
 
@@ -71,6 +73,14 @@ Resources:
 The sample names here need to match the column names in your counts file.  
 
 #### (3) Set up DESeq2 model & run statistical analysis  
+To do this you will create an object in R that contains the count data, the metadata, and a statistical design. You'll use the ```DESeqDataSetFromMatrix``` function in DESeq2 to do this.
 
+#### (4) Do a functional annotation for genes of interest  
 
-#### (4) Merge results with functional annotation
+METHOD 1: Merge the DESeq results table with a functional annotation available in our share folder (using R).
+
+In the genome annotation we used for counting reads, the gene names (gene IDs) are things like "g5098.t1" but do not tell us anything about the function of the gene. So I ran a program called [eggNOG-mapper](http://eggnog-mapper.embl.de/) to find out what known gene sequences our *Hyles lineata* genes "look like". There are instructions for this option in the R script.  
+
+You can download this functional annotation file from:
+```/blue/eny2890/share/05_dge/rna.annot.cds.emapper.annotations```. Save it in the same folder as your other DESeq2 data and you can import it into R to merge with your DESeq2 results.
+
