@@ -55,7 +55,10 @@ Resources:
 + [Authors'  step-by-step tutorial](https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)  
  + [Count normalization](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
 
+#### Help with DESeq2  
+Each version of R runs a different version of DESeq2. You can check your version of R by opening R or RStudio. It will be printed in the terminal screen upon opening the program. 
 
+You can then find the version of DESeq2 you should be running here: 
 
 <p align="center">
 #### Steps in R ###

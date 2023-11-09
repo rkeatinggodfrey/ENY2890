@@ -12,12 +12,15 @@ if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install(version = "3.18")
 
+BiocManager::install("DESeq2", force=TRUE)
+
 library(DESeq2)
 library(dplyr)
 library(ggplot2)
 
 install.packages("htmltools")
 library(htmltools)
+
 
 
 
