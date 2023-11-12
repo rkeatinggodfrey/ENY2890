@@ -18,9 +18,9 @@ library(ggrepel)
 
 ## Use threshold of >1 Log2FC and padj <0.05
 
-##----- Female geni vs female genitalia -----##
+##----- Female vs. Male genitalia -----##
 ## subset results table to only fields of interest
-viz.results <- results.annotated[,c(1,2,3,7,9,10,14,18,27)]
+viz.results <- results.annotated[,c(1,2,3,7,9,10,14,15,18,27)]
 ## create a dataframe limited to ony significant targets
 sig.results <-subset(viz.results,viz.results$padj <0.05)
 
@@ -30,6 +30,7 @@ write.csv(sig.results, "Sig_Results_Geni_Log2FC.csv")
 ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj), 
                                 label = geneID))+
   geom_point(colour="purple")+
+  xlim(-35,35)+ # this sets the scale for the x-axis
   theme_classic()
 
 ## Volcano Plot of all targets with significance designated
@@ -43,10 +44,14 @@ ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj),
   geom_vline(xintercept=-3, colour="blue", linetype="dashed")+
   geom_hline(yintercept=4, colour="blue", linetype="dashed")+
   ggtitle("Female vs. Male Genitalia")+
+  xlim(-35,35)+
   theme_classic()
 
 
 ## Volcano Plot of sig targets with protein family labels
+## here the "label =" parameter is set to PFAMs so that protein
+## family names will be associated with data points
+## You could use "geneID" or "Preferred_name" for this
 ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj), 
                                  label = PFAMs))+
   geom_point(color=dplyr::case_when(sig.results$padj > .0001 ~ "grey",
@@ -73,3 +78,5 @@ ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj),
                   max.overlaps  = 20)+
   ggtitle("Female vs Male Genitalia")+
   theme_classic()
+
+
