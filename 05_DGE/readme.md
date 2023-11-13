@@ -84,6 +84,15 @@ METHOD 1: Merge the DESeq results table with a functional annotation available i
 
 In the genome annotation we used for counting reads, the gene names (gene IDs) are things like "g5098.t1" but do not tell us anything about the function of the gene. So I ran a program called [eggNOG-mapper](http://eggnog-mapper.embl.de/) to find out what known gene sequences our *Hyles lineata* genes "look like". There are instructions for this option in the R script.  
 
-You can download this functional annotation file from:
-```/blue/eny2890/share/05_dge/rna.annot.cds.emapper.annotations```. Save it in the same folder as your other DESeq2 data and you can import it into R to merge with your DESeq2 results.
 
+You can download this functional annotation file from:
+```/blue/eny2890/share/05_dge/rna.annot.cds.emapper.annotations```. Save it in the same folder as your other DESeq2 data and you can import it into R to merge with your DESeq2 results. You can then use ```write.csv``` command in R to output this file as a .csv that can be opened in excel. 
+
+
+#### Interpreting functional annotation 
+
+Once you have your annotated differential gene expression results  open in excel, you can use the Description, GOs (Go terms), or PFAMs (protein families) columns to explore your data a bit.  
+
+The website QuickGO is helpful for looking up GO terms of interest. For example, here are the GO terms associated with different olfactory functions: https://www.ebi.ac.uk/QuickGO/search/olfactory  
+
+If you had a hypothesis about differences in olfactory behavior, you could search for these terms in your annotated data file and present how many you found, and how many / which showed differential expression.
