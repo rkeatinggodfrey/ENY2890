@@ -15,6 +15,7 @@ BiocManager::install(version = "3.18")
 
 BiocManager::install("DESeq2", force=TRUE)
 
+library(tidyverse)
 library(DESeq2)
 library(dplyr)
 library(ggplot2)
@@ -78,6 +79,11 @@ colnames(counts)<-c(file.names)
 ## so we need to turn the gene id row names into a column (variable)
 counts <-tibble::rownames_to_column(counts,"gene_id")
 
+## if your counts file still has the information for feature 
+## mapping at the bottom, you can get rid of it using
+counts <- counts %>% 
+  filter(!grepl('_', gene_id))
+
 
 
 ### (2) Import metadata file ###
@@ -87,7 +93,8 @@ counts <-tibble::rownames_to_column(counts,"gene_id")
 setwd("/Users/rkeatinggodfrey/Documents/2023/03_CURE/DESeq2")
 
 ## Import metadata (colData) ###
-metadata <- read.csv("/Users/rkeatinggodfrey/Documents/2023/03_CURE/DESeq2/DGE_cure/metadata_example.csv")
+metadata <- read.csv("/Users/rkeatinggodfrey/Documents/2023/03_CURE/DESeq2/DGE_cure/metadata_example.csv",
+                     header=T)
 
 ## **ONLY RUN If you imported the directory to create the counts dataframe,
 ## add file names to metadata**
@@ -112,7 +119,6 @@ is.factor(meta$body_part)
 
 ### (3) Set up DESeq2 Model and Run analysis ###
   
-
 ## In this example I am comparing genitalia from males and 
 ## females, so I just need to designate comparisons by sex (~sex)
 ## If you are comparing both body parts and sex, include 
@@ -157,12 +163,21 @@ head(results.gen)
 ## You can save this results file as a csv in your current working directory
 write.csv(results.gen,"Genitalia_Males_v_Females_Results_table_01.csv")
 
+
+### Plots of data to asses if there are outliers or "weird" samples
+
 ## You can make a PCA plot of the data to see where samples cluster
 ## first transform the data
 res.transform <- rlog(dds.gen)
 ## then use the PCA plot function to display comparisons
 ## across one of your variables
 plotPCA(res.transform, intgroup="sex")
+
+## You can make dendrograms that show how certain samples cluster with
+## oneanother
+
+dists <- dist(t(assay(res.transform)))
+plot(hclust(dists))
 
 
 ### (4) Merge results with functional annotation ###
