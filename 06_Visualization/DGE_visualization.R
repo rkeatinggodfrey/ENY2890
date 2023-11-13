@@ -1,15 +1,21 @@
 ## Project: Fall 2023 CURE Course 
 ## Authors: R. Keating Godfrey
-## Last updated: 23-11-11
+## Last updated: 23-11-12
 
 install.packages("dplyr","ggplot2","ggrepel")
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
 
-## Pages used to create this script
 
-## Volcano plots:
+## create a dataframe limited to ony significant targets
+sig.results <-subset(results.annotated,results.annotated$padj <0.05)
+write.csv(sig.results, "Sig_Results_Geni_Log2FC.csv")
+
+
+################ Volcano plots ################
+
+## Pages used to create this script
 ## https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html
 ## https://stackoverflow.com/questions/15624656/label-points-in-geom-point
 ## https://ggrepel.slowkow.com/articles/examples.html
@@ -20,11 +26,7 @@ library(ggrepel)
 
 ##----- Female vs. Male genitalia -----##
 ## subset results table to only fields of interest
-viz.results <- results.annotated[,c(1,2,3,7,9,10,14,15,18,27)]
-## create a dataframe limited to ony significant targets
-sig.results <-subset(viz.results,viz.results$padj <0.05)
-
-write.csv(sig.results, "Sig_Results_Geni_Log2FC.csv")
+viz.results <- sig.results[,c(1,2,3,7,9,10,14,15,18,27)]
 
 ## Volcano Plot of all targets 
 ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj), 
@@ -79,4 +81,26 @@ ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj),
   ggtitle("Female vs Male Genitalia")+
   theme_classic()
 
+################ End Volcano plots ################
 
+
+
+
+################ Box plots of counts data ###########
+
+
+
+################ Heatmaps of counts data ###########
+
+
+
+
+################ KEGG and GO Enrichment ################
+
+
+
+
+##
+## https://archetypalecology.wordpress.com/2021/01/27/how-to-perform-kegg-and-go-enrichment-analysis-of-non-model-species-using-r/
+## https://rstats101.com/separate-a-collapsed-column-into-multiple-rows/
+## https://guangchuangyu.github.io/2015/05/use-clusterprofiler-as-an-universal-enrichment-analysis-tool/
