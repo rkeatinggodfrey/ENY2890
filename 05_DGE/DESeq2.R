@@ -35,6 +35,12 @@ setwd("~/Documents/2023/03_CURE/DESeq2/DGE_cure")
 ## read in the already-concatenated counts file
 counts <- read.csv("counts_example.csv", header=T)
 
+## if your counts file still has the information for feature 
+## mapping at the bottom, you can get rid of it using
+counts <- counts %>% 
+  filter(!grepl('_', gene_id))
+
+
 
 ## OPTION B: read in counts from folder and combine into one dataframe ###
 
@@ -174,6 +180,17 @@ annot <- read.csv("rna.annot.cds.emapper.annotations.geneID.csv", header=T)
 
 ## merge DGE with annotation file
 results.annotated <-merge(results.table,annot, by=c("geneID"))
+
+## note that the annotation file only has 16225 observations
+## but your counts file likely has many more
+## we can see which ones are missing 
+
+ids.counts <- as.data.frame(results.table$geneID)
+colnames(ids.counts) <-c("geneIDs")
+ids.annot <- as.data.frame(annot$geneID)
+colnames(ids.annot) <-c("geneIDs")
+
+ids.not.annot <- anti_join(ids.counts,ids.annot)
 
 ## you can save this results table that includes
 ## DGE and functional annotation information as a CSV
