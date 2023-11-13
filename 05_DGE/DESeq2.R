@@ -15,7 +15,9 @@ BiocManager::install(version = "3.18")
 
 BiocManager::install("DESeq2", force=TRUE)
 
+install.packages("tidyverse")
 library(tidyverse)
+
 library(DESeq2)
 library(dplyr)
 library(ggplot2)
@@ -175,7 +177,6 @@ plotPCA(res.transform, intgroup="sex")
 
 ## You can make dendrograms that show how certain samples cluster with
 ## oneanother
-
 dists <- dist(t(assay(res.transform)))
 plot(hclust(dists))
 
@@ -220,7 +221,8 @@ ids.not.annot <- anti_join(ids.counts,ids.annot)
 ## you can save this results table that includes
 ## DGE and functional annotation information as a CSV
 ## in your working directory
-write.csv(results.annotated,"Genitalia_Males_v_Females_Results_table_02.csv")
+write.csv(results.annotated,"Genitalia_Males_v_Females_Results_table_02.csv",
+          row.names = F)
 
 
 
