@@ -8,7 +8,7 @@ library(ggplot2)
 library(ggrepel)
 
 
-## create a dataframe limited to ony significant targets
+## create a dataframe limited to only significant targets
 sig.results <-subset(results.annotated,results.annotated$padj <0.05)
 write.csv(sig.results, "Sig_Results_Geni_Log2FC.csv")
 
@@ -45,7 +45,7 @@ ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj),
   geom_vline(xintercept=3, colour="blue", linetype="dashed")+
   geom_vline(xintercept=-3, colour="blue", linetype="dashed")+
   geom_hline(yintercept=4, colour="blue", linetype="dashed")+
-  ggtitle("Female vs. Male Genitalia")+
+  ggtitle("Male vs Female Genitalia")+
   xlim(-35,35)+
   theme_classic()
 

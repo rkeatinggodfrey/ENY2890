@@ -30,7 +30,7 @@ library(htmltools)
 ## (compiled using Google Sheets or Excel)
 
 ## set working directory to source file location
-setwd("~/Documents/2023/03_CURE/DESeq2/DGE_cure")
+setwd("~/Documents/2023/03_CURE/ENY2890/05_DGE")
 
 ## read in the already-concatenated counts file
 counts <- read.csv("counts_example.csv", header=T)
@@ -131,6 +131,10 @@ dds.gen <-DESeqDataSetFromMatrix(countData=counts, # the counts data object
 ### Run DESeq analyis using the DESeq function###
 dds.gen <- DESeq(dds.gen)
 
+## If you used a counts file with multiple body parts, you can subset the dds
+## object and run results and summary on it
+dds.sub <- dds.gen[ , dds.gen$body_part %in% c("Genitalia") ]
+
 ## Get a table of the results 
 ## This is going to summarize the findings into a table
 ## And pick out the specific comparison you are trying to make
@@ -153,6 +157,12 @@ head(results.gen)
 ## You can save this results file as a csv in your current working directory
 write.csv(results.gen,"Genitalia_Males_v_Females_Results_table_01.csv")
 
+## You can make a PCA plot of the data to see where samples cluster
+## first transform the data
+res.transform <- rlog(dds.gen)
+## then use the PCA plot function to display comparisons
+## across one of your variables
+plotPCA(res.transform, intgroup="sex")
 
 
 ### (4) Merge results with functional annotation ###
@@ -175,7 +185,7 @@ library(tibble)
 results.table <- as.data.frame(results.gen)
 results.table <- tibble::rownames_to_column(results.table,"geneID")
 
-## read in the annotation file
+## read in the annotation file made from coding sequences
 annot <- read.csv("rna.annot.cds.emapper.annotations.geneID.csv", header=T)
 
 ## merge DGE with annotation file
