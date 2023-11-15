@@ -129,19 +129,23 @@ is.factor(meta$body_part)
 ## are, run:
 ?DESeqDataSetFromMatrix
 
-### Construct a DESeq data set object ###
+### Construct a DESeq data set matrix object ###
 ## This object stores all of the input data needed to run differential
 ## expression analysis
 dds.gen <-DESeqDataSetFromMatrix(countData=counts, # the counts data object
                              colData=meta, # the meta data
                              design=~sex, # the statistical design 
                              tidy=T)
-### Run DESeq analyis using the DESeq function###
-dds.gen <- DESeq(dds.gen)
-
 ## If you used a counts file with multiple body parts, you can subset the dds
 ## object and run results and summary on it
 dds.sub <- dds.gen[ , dds.gen$body_part %in% c("Genitalia") ]
+
+
+
+### Run DESeq analyis using the DESeq function ###
+## define this as a new object called "dds.gen.de" so you
+## do not overwrite your matrix
+dds.gen.de <- DESeq(dds.gen)
 
 ## Get a table of the results 
 ## This is going to summarize the findings into a table
@@ -149,7 +153,7 @@ dds.sub <- dds.gen[ , dds.gen$body_part %in% c("Genitalia") ]
 ## Remember in this example data set I only have genitalia samples
 ## so I want the results to look at the variable "sex"
 ## and the levels "males" and "females"
-results.gen <-results(dds.gen, contrast=c("sex","Male","Female"))
+results.gen <-results(dds.gen.de, contrast=c("sex","Male","Female"))
 
 ## Look at summary of analysis
 ## This will tell you how many genes showed 
@@ -166,11 +170,13 @@ head(results.gen)
 write.csv(results.gen,"Genitalia_Males_v_Females_Results_table_01.csv")
 
 
-### Plots of data to asses if there are outliers or "weird" samples
+### Plots of count data ##
+
+## These plots help you see how your samples cluster in "counts space"
 
 ## You can make a PCA plot of the data to see where samples cluster
 ## first transform the data
-res.transform <- rlog(dds.gen)
+res.transform <- rlog(dds.gen) # this should be your matrix object
 ## then use the PCA plot function to display comparisons
 ## across one of your variables
 plotPCA(res.transform, intgroup="sex")
@@ -210,7 +216,6 @@ results.annotated <-merge(results.table,annot, by=c("geneID"))
 ## note that the annotation file only has 16225 observations
 ## but your counts file likely has many more
 ## we can see which ones are missing 
-
 ids.counts <- as.data.frame(results.table$geneID)
 colnames(ids.counts) <-c("geneIDs")
 ids.annot <- as.data.frame(annot$geneID)
