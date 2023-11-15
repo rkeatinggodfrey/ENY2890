@@ -2,10 +2,21 @@
 ## Authors: R. Keating Godfrey
 ## Last updated: 23-11-12
 
+
+
+
+################ Volcano plots ################
+
 install.packages("dplyr","ggplot2","ggrepel")
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
+
+## Pages used to create this script
+## https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html
+## https://stackoverflow.com/questions/15624656/label-points-in-geom-point
+## https://ggrepel.slowkow.com/articles/examples.html
+## http://www.sthda.com/english/wiki/ggplot2-add-straight-lines-to-a-plot-horizontal-vertical-and-regression-lines
 
 ## if it's not already in your Global Environment, import the
 ## annotated data frame
@@ -15,16 +26,6 @@ results.annotated <- read.csv("Genitalia_Males_v_Females_Results_table_02.csv",
 ## create a dataframe limited to significant targets
 results.sig <-subset(results.annotated,results.annotated$padj <0.05)
 write.csv(results.sig, "Sig_Results_Geni_Log2FC.csv")
-
-
-################ Volcano plots ################
-
-## Pages used to create this script
-## https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html
-## https://stackoverflow.com/questions/15624656/label-points-in-geom-point
-## https://ggrepel.slowkow.com/articles/examples.html
-## http://www.sthda.com/english/wiki/ggplot2-add-straight-lines-to-a-plot-horizontal-vertical-and-regression-lines
-
 
 ## Use threshold of >1 Log2FC and padj <0.05
 
@@ -90,15 +91,7 @@ ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj),
 
 
 
-################ Box plots of counts data ###########
-
-
-
 ################ Heatmaps of DESeq2 data ###########
-
-## Resources
-## https://youtu.be/S2_FTg9kaZU?feature=shared 
-
 
 ## here are the packages you need (you don't need to reload if loaded)
 library(DESeq2)
@@ -107,13 +100,18 @@ library(ggplot2)
 BiocManager::install("ComplexHeatmap")
 library(ComplexHeatmap)
 
+## Resources
+## https://youtu.be/S2_FTg9kaZU?feature=shared 
 
+
+#################### Example heat map of genes with ########################
+############################ L2FC > 2 or < -2  #############################
 
 ## turn the results from DESeq2 into a dataframe
 ## here the row names should be the gene IDs just like
 ## in the annotation file
 sig <- as.data.frame(results.gen) # data frame of all results from DESeq2
-sig <- subset(sig,sig$pvalue < 0.05) # subset to significant results
+sig <- subset(sig,sig$padj < 0.05) # subset to significant results
 
 ## Normalized counts from DESeq function (dds.gen.de in our example)
 matrix.sig <-counts(dds.gen.de, normalized = T)[rownames(sig),]
@@ -131,6 +129,9 @@ Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matr
 
 ## That is terrifying ^^ ##
 
+
+#################### Example heat map of genes with ########################
+############################ L2FC > 2 or < -2  #############################
 
 ## So what should we do?
 ## How can we reduce the number of genes on our list?
@@ -155,7 +156,14 @@ colnames(matrix.z) <- meta$sample
 Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matrix.z),
         name="z score") 
 
-## (2) Use PFAMs or other identifier from annotation file
+#################### END example heat map of genes with ########################
+############################ L2FC > 2 or < -2  #############################
+
+
+#################### Example heat map of genes with ########################
+###################### "odor" in their description #########################
+
+## (2) Use GOs or other identifier from annotation file to subset results
 ## read in the annotation file made from coding sequences
 ## but in this case make the first column (gene IDs) the row names
 annot <- read.csv("rna.annot.cds.emapper.annotations.geneID.csv", header=T,
@@ -163,23 +171,22 @@ annot <- read.csv("rna.annot.cds.emapper.annotations.geneID.csv", header=T,
 
 sig.annot <- transform(merge(sig,annot,by=0), 
                        row.names=Row.names, Row.names=NULL)
-# note often this ^^ reduces the number of sig genes in this data frame.
+# note often this ^^ results in a reduced number of sig genes in our data frame.
 # but not necessarily because we want it to... why did it do this?
 
-## Now choose only those genes with the go term
+## Now choose only those genes with a particular search or GO term
+## Resource: https://www.statology.org/r-partial-string-match/
+sig.odor <- sig.annot[grep("odor", sig.annot$Description),]
+## you could select a second term
+sig.chem <- sig.annot[grep("chemo", sig.annot$Description),]
+## then add the data frames together with those two terms
+sig.chem <-rbind(sig.odor,sig.chem)
 
-sig.annot. <- apply(df, 1, function(r) any(r %in% c("GO:0007635", "GO")))
-
-## GO:0007635 = chemosensory behavior
-
-
-## 
-
-## Normalized counts from DESeq function (dds.gen.de in our example)
-matrix.sig <-counts(dds.gen.de, normalized = T)[rownames(sig.annot),]
+## Normalized counts from 
+matrix.chem <-counts(dds.gen.de, normalized = T)[rownames(sig.chem),]
 
 ## get zscore for each row
-matrix.z <-t(apply(matrix.sig,1,scale))
+matrix.z <-t(apply(matrix.chem,1,scale))
 
 ## now take sample IDs from your metadata and make
 ## them the column names
@@ -187,8 +194,12 @@ colnames(matrix.z) <- meta$sample
 
 ## Ok let's make a heatmap!!
 Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matrix.z),
-        name="z score", row_labels = sig.annot$GOs) 
+        name="z score") 
 
+#################### END example heat map of genes with ########################
+###################### "odor" in their description #########################
+
+################ END Heatmaps of DESeq2 data ###########
 
 
 
@@ -217,6 +228,9 @@ require (clusterProfiler)
 
 ## As a first example, let's just look at enrichment terms across all differentially
 ## expressed genes (this will include male and female, up or down)
+
+## create a dataframe limited to significant targets
+results.sig <-subset(results.annotated,results.annotated$padj <0.05)
 
 ## get a list of differential expressed gene id names
 ## from the significant results table
@@ -281,3 +295,17 @@ go2gene <-go[, c("GOs","geneID")]
 enriched.f <- enricher(deg.genes.f, TERM2GENE=go2gene)
 head(summary(enriched.f))
 barplot(enriched.f)
+
+
+
+################ END GO Enrichment ################
+
+
+
+
+
+################ Box plots of counts data ###########
+
+
+
+
