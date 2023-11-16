@@ -119,9 +119,31 @@ is.factor(meta$sex)
 is.factor(meta$body_part)
 
 
-### (3) Set up DESeq2 Model and Run analysis ###
-  
-## In this example I am comparing genitalia from males and 
+### (3a) Subsetting data ###
+
+## If you are asking questions about two different body parts, you can 
+## create subset counts and meta data files for the body part of interest,
+## then combine them each into independent matrices.
+
+## to subset the metadata, look at the body_part and select only
+## rows that contain "legs" or whatever body part you're interested in
+
+meta.legs <- subset(meta,meta$body_part =="legs")
+
+## to subset the counts data, we will need to use indexing, which 
+## means we will select columns based on their number/order
+## you can manually count the column number but looking at the 
+## dataframe or you can use colnames() to print the column names with
+## a number next to (the odd numbered ones)
+colnames(counts)
+
+## now, select column 1 (this is the gene_id column & you need gene ids!)
+## and whatever other columns you need using
+counts.legs <- counts[,c(1,3,5,6,7,)]
+
+### (3b) Set up DESeq2 Model and Run analysis
+
+#### In this example I am comparing genitalia from males and 
 ## females, so I just need to designate comparisons by sex (~sex)
 ## If you are comparing both body parts and sex, include 
 ## design=body_part+sex
