@@ -41,11 +41,11 @@ ggplot(data = viz.results, aes(x = log2FoldChange, y = -log10(padj),
   theme_classic()
 
 ## Volcano Plot of all targets with significance designated
-ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj), 
+ggplot(data = viz.results, aes(x = log2FoldChange, y = -log10(padj), 
                            label = geneID))+
-  geom_point(color=dplyr::case_when(sig.results$padj > .0001 ~ "grey",
-                                    sig.results$log2FoldChange > 3 ~ "blue",
-                                    sig.results$log2FoldChange < -3 ~ "blue"),
+  geom_point(color=dplyr::case_when(viz.results$padj > .0001 ~ "grey",
+                                    viz.results$log2FoldChange > 3 ~ "blue",
+                                    viz.results$log2FoldChange < -3 ~ "blue"),
              size = 2, alpha = 0.65)+
   geom_vline(xintercept=3, colour="blue", linetype="dashed")+
   geom_vline(xintercept=-3, colour="blue", linetype="dashed")+
@@ -59,14 +59,14 @@ ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj),
 ## here the "label =" parameter is set to PFAMs so that protein
 ## family names will be associated with data points
 ## You could use "geneID" or "Preferred_name" for this
-ggplot(data = sig.results, aes(x = log2FoldChange, y = -log10(padj), 
+ggplot(data = viz.results, aes(x = log2FoldChange, y = -log10(padj), 
                                  label = PFAMs))+
-  geom_point(color=dplyr::case_when(sig.results$padj > .0001 ~ "grey",
-                                    sig.results$log2FoldChange > 3 ~ "blue",
-                                    sig.results$log2FoldChange < -3 ~ "blue"),
+  geom_point(color=dplyr::case_when(viz.results$padj > .0001 ~ "grey",
+                                    viz.results$log2FoldChange > 3 ~ "blue",
+                                    viz.results$log2FoldChange < -3 ~ "blue"),
              size = 2, alpha = 0.65)+ 
-  geom_text_repel(data = subset(sig.results, log2FoldChange > 3
-                                & sig.results$padj < .0001),
+  geom_text_repel(data = subset(viz.results, log2FoldChange > 3
+                                & viz.results$padj < .0001),
                   size          = 2.5,
                   box.padding   = 0.5,
                   point.padding = 0.05,
