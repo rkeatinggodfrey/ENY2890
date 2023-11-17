@@ -140,6 +140,10 @@ colnames(counts)
 ## and whatever other columns you need using
 counts.legs <- counts[,c(1,3,5,6,7,)]
 
+## Now you can use these subsets of your metadata and your counts
+## to set up a DESeq2 matrix and run differential gene expression
+## analysis on it
+
 
 ### (3b) Set up DESeq2 Model and Run analysis
 
