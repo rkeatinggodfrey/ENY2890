@@ -1,7 +1,7 @@
 
 ## Project: Fall 2023 CURE Course 
 ## Authors: R. Keating Godfrey
-## Last updated: 23-11-11
+## Last updated: 23-11-17
 
 ## Resources:
 ## https://bioconductor.org/packages/release/bioc/html/DESeq2.html
@@ -127,7 +127,6 @@ is.factor(meta$body_part)
 
 ## to subset the metadata, look at the body_part and select only
 ## rows that contain "legs" or whatever body part you're interested in
-
 meta.legs <- subset(meta,meta$body_part =="legs")
 
 ## to subset the counts data, we will need to use indexing, which 
@@ -141,12 +140,9 @@ colnames(counts)
 ## and whatever other columns you need using
 counts.legs <- counts[,c(1,3,5,6,7,)]
 
+
 ### (3b) Set up DESeq2 Model and Run analysis
 
-#### In this example I am comparing genitalia from males and 
-## females, so I just need to designate comparisons by sex (~sex)
-## If you are comparing both body parts and sex, include 
-## design=body_part+sex
 ## To learn what the different variables of DESeqDataSetFromMatrix
 ## are, run:
 ?DESeqDataSetFromMatrix
@@ -158,10 +154,6 @@ dds.gen <-DESeqDataSetFromMatrix(countData=counts, # the counts data object
                              colData=meta, # the meta data
                              design=~sex, # the statistical design 
                              tidy=T)
-## If you used a counts file with multiple body parts, you can subset the dds
-## object and run results and summary on it
-dds.sub <- dds.gen[ , dds.gen$body_part %in% c("Genitalia") ]
-
 
 
 ### Run DESeq analyis using the DESeq function ###
