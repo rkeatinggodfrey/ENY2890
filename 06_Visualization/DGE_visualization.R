@@ -1,13 +1,12 @@
 ## Project: Fall 2023 CURE Course 
 ## Authors: R. Keating Godfrey
-## Last updated: 23-11-12
-
-
+## Last updated: 23-11-18
 
 
 ################ Volcano plots ################
 
-install.packages("dplyr","ggplot2","ggrepel")
+## Necessary packages--you don't need to reload if already loaded
+install.packages("dplyr","ggplot2","ggrepel") 
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
@@ -107,23 +106,23 @@ library(ComplexHeatmap)
 #################### Example heat map of genes with ########################
 ############################ L2FC > 2 or < -2  #############################
 
-## turn the results from DESeq2 into a dataframe
+## (1) Turn the results from DESeq2 into a dataframe
 ## here the row names should be the gene IDs just like
 ## in the annotation file
 sig <- as.data.frame(results.gen) # data frame of all results from DESeq2
 sig <- subset(sig,sig$padj < 0.05) # subset to significant results
 
-## Normalized counts from DESeq function (dds.gen.de in our example)
+## (2) Normalized counts from DESeq function (dds.gen.de in our example)
 matrix.sig <-counts(dds.gen.de, normalized = T)[rownames(sig),]
 
-## get zscore for each row
+## (3) Get zscore for each row
 matrix.z <-t(apply(matrix.sig,1,scale))
 
 ## now take sample IDs from your metadata and make
 ## them the column names
 colnames(matrix.z) <- meta$sample
 
-## Ok let's make a heatmap!!
+## (4) Ok let's make a heatmap!!
 Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matrix.z),
         name="z score") 
 
@@ -137,22 +136,24 @@ Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matr
 ## How can we reduce the number of genes on our list?
 
 ## (1) Use a threshold for log2fc
+## this is the "sig" file you created above by selecting
+## only genes that had adjusted p-values < 0.05 
 sig.p2 <-subset(sig,sig$log2FoldChange >2)
 sig.n2 <-subset(sig,sig$log2FoldChange < -2)
 
 sig.2 <- rbind(sig.p2,sig.n2)
 
-## Normalized counts from 
+## (2) Normalized counts from 
 matrix.sig.2 <-counts(dds.gen.de, normalized = T)[rownames(sig.2),]
 
-## get zscore for each row
+## (3) Get zscore for each row
 matrix.z <-t(apply(matrix.sig.2,1,scale))
 
 ## now take sample IDs from your metadata and make
 ## them the column names
 colnames(matrix.z) <- meta$sample
 
-## Ok let's make a heatmap!!
+## (4) Ok let's make a heatmap!!
 Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matrix.z),
         name="z score") 
 
@@ -161,7 +162,7 @@ Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matr
 
 
 #################### Example heat map of genes with ########################
-###################### "odor" in their description #########################
+################ "odor" or "chem" in their description #####################
 
 ## (2) Use GOs or other identifier from annotation file to subset results
 ## read in the annotation file made from coding sequences
