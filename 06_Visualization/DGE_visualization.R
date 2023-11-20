@@ -26,7 +26,6 @@ results.annotated <- read.csv("Genitalia_Males_v_Females_Results_table_02.csv",
 results.sig <-subset(results.annotated,results.annotated$padj <0.05)
 write.csv(results.sig, "Sig_Results_Geni_Log2FC.csv")
 
-## Use threshold of >1 Log2FC and padj <0.05
 
 ##----- Female vs. Male genitalia -----##
 ## subset results table to only fields of interest
@@ -35,7 +34,7 @@ viz.results <- results.sig[,c(1,2,3,7,9,10,14,15,18,27)]
 ## Volcano Plot of all targets 
 ggplot(data = viz.results, aes(x = log2FoldChange, y = -log10(padj), 
                                 label = geneID))+
-  geom_point(colour="purple")+
+  geom_point(colour="pink")+
   xlim(-35,35)+ # this sets the scale for the x-axis
   theme_classic()
 
@@ -58,10 +57,12 @@ ggplot(data = viz.results, aes(x = log2FoldChange, y = -log10(padj),
 ## here the "label =" parameter is set to PFAMs so that protein
 ## family names will be associated with data points
 ## You could use "geneID" or "Preferred_name" for this
+library(ggrepl)
+
 ggplot(data = viz.results, aes(x = log2FoldChange, y = -log10(padj), 
-                                 label = PFAMs))+
+                                 label = geneID))+
   geom_point(color=dplyr::case_when(viz.results$padj > .0001 ~ "grey",
-                                    viz.results$log2FoldChange > 3 ~ "blue",
+                                    viz.results$log2FoldChange > 3 ~ "purple",
                                     viz.results$log2FoldChange < -3 ~ "blue"),
              size = 2, alpha = 0.65)+ 
   geom_text_repel(data = subset(viz.results, log2FoldChange > 3
@@ -73,8 +74,8 @@ ggplot(data = viz.results, aes(x = log2FoldChange, y = -log10(padj),
                   segment.size  = 0.1,
                   segment.color = "grey",
                   max.overlaps  = 20)+
-  geom_text_repel(data = subset(sig.results, log2FoldChange < -3
-                                & sig.results$padj < .0001),
+  geom_text_repel(data = subset(viz.results, log2FoldChange < -3
+                                & viz.results$padj < .0001),
                   size          = 2.5,
                   box.padding   = 0.5,
                   point.padding = 0.05,
@@ -82,7 +83,7 @@ ggplot(data = viz.results, aes(x = log2FoldChange, y = -log10(padj),
                   segment.size  = 0.1,
                   segment.color = "grey",
                   max.overlaps  = 20)+
-  ggtitle("Female vs Male Genitalia")+
+  ggtitle("Male vs Female Genitalia")+
   theme_classic()
 
 ################ End Volcano plots ################
@@ -167,7 +168,7 @@ Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matr
 ## (2) Use GOs or other identifier from annotation file to subset results
 ## read in the annotation file made from coding sequences
 ## but in this case make the first column (gene IDs) the row names
-annot <- read.csv("rna.annot.cds.emapper.annotations.geneID.csv", header=T,
+annot <- read.csv("rna.annot.aa.emapper.annotations.geneID.csv", header=T,
                   row.names = 1)
 
 sig.annot <- transform(merge(sig,annot,by=0), 
