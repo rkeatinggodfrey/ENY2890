@@ -103,8 +103,8 @@ library(ComplexHeatmap)
 ## https://youtu.be/S2_FTg9kaZU?feature=shared 
 
 
-#################### Example heat map of genes with ########################
-############################ L2FC > 2 or < -2  #############################
+################### Example heat map of genes with ##################
+########################## padj < 0.05  #############################
 
 ## (1) Turn the results from DESeq2 into a dataframe
 ## here the row names should be the gene IDs just like
