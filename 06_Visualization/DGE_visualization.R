@@ -168,7 +168,7 @@ Heatmap(matrix.z, cluster_rows=T, cluster_columns=T, column_labels=colnames(matr
 ## (2) Use GOs or other identifier from annotation file to subset results
 ## read in the annotation file made from coding sequences
 ## but in this case make the first column (gene IDs) the row names
-annot <- read.csv("rna.annot.aa.emapper.annotations.geneID.csv", header=T,
+annot <- read.csv("rna.annot.cds.emapper.annotations.geneID.csv", header=T,
                   row.names = 1)
 
 sig.annot <- transform(merge(sig,annot,by=0), 
@@ -176,11 +176,21 @@ sig.annot <- transform(merge(sig,annot,by=0),
 # note often this ^^ results in a reduced number of sig genes in our data frame.
 # but not necessarily because we want it to... why did it do this?
 
+## you can alternately create this file by subsetting your annotated
+## results dataframe if it's already in your global environment
+sig.annot.2 <-subset(results.annotated,results.annotated$padj < 0.05)
+## if you do it this way, you need to make you geneIDs the row names
+rownames(sig.annot.2) <-sig.annot.2$geneID 
+## if you want you can remove the geneID field/column by selecting all 
+## columns except the first one. This is optional. Having it as a field
+## in the data frame will not affect making the heat map
+sig.annot.2 <-sig.annot.2[,c(2:27)]
+
 ## Now choose only those genes with a particular search or GO term
 ## Resource: https://www.statology.org/r-partial-string-match/
-sig.odor <- sig.annot[grep("odor", sig.annot$Description),]
+sig.odor <- sig.annot.2[grep("odor", sig.annot$Description),]
 ## you could select a second term
-sig.chem <- sig.annot[grep("chemo", sig.annot$Description),]
+sig.chem <- sig.annot.2[grep("chemo", sig.annot$Description),]
 ## then add the data frames together with those two terms
 sig.chem <-rbind(sig.odor,sig.chem)
 
