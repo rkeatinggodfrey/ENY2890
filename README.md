@@ -13,7 +13,7 @@ Course-based Undergraduate Research Experience in bioinformatics and differentia
 
 
 ## Broad Analysis Goals
-In this course you will work in small teams to compare gene expression in the whiteline sphinx moth (*Hyles lineata*). We will focus on two analyses:
+In this course you will work in small teams to compare gene expression in the whitelined sphinx moth (*Hyles lineata*). We will focus on two analyses:
 + Differential Gene Expression (DGE) wherein we will count the number of times a gene shows up in each sample and compare across samples using statistics to determine if samples or groups of samples have show greater or fewer transcripts of a gene than others.
 + Presence/absence wherein we will simply look at what genes show up in each sample or group of samples and report the presence or absence of certain genes.
 
